@@ -23,16 +23,35 @@ def Leitor():
 
 
 
-
-def exeEncaixar(trapezios):
+def Pecas(trapezios):
   pecas = list()
-  print(trapezios)
   for x in range (len(trapezios)):
-    print(x)
+    # print(x)
     pecas.append(Trapezio(float(trapezios[x][0]),float(trapezios[x][1]),float(trapezios[x][2])))
-    print(pecas[x])
+    # print(pecas[x])
+
+  return pecas
+
+
+# print(Pecas(Leitor())[0].superiorEsquerdo)
+# print(Pecas(Leitor())[0].superiorDireito)
+# print(Pecas(Leitor())[0].inferiorEsquerdo)
+# print(Pecas(Leitor())[0].inferiorDireito)
+# print(Pecas(Leitor())[1].superiorEsquerdo)
+# print(Pecas(Leitor())[1].superiorDireito)
+# print(Pecas(Leitor())[1].inferiorEsquerdo)
+# print(Pecas(Leitor())[1].inferiorDireito)
+# print(Pecas(Leitor())[2].superiorEsquerdo)
+# print(Pecas(Leitor())[2].superiorDireito)
+# print(Pecas(Leitor())[2].inferiorEsquerdo)
+# print(Pecas(Leitor())[2].inferiorDireito)
+
+def exeEncaixar(pecas):
+  distancias = list()
   for x in range (len(pecas)-1):
-    pecas[x].Encaixar(pecas[x+1])
+    # print(x)
+    distancias.append(pecas[x].Encaixar(pecas[x+1]))
+  return distancias
+ 
 
-
-exeEncaixar(Leitor())
+# exeEncaixar(Pecas(Leitor()))
