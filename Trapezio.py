@@ -22,7 +22,7 @@ class Trapezio(object):
             self.inferiorEsquerdo = [x3,0]
 
         if(x3> 0 and x2>0  ):
-            self.inferiorDireito = [x2 + x3,0]
+            self.inferiorDireito = [x2,0]
         else:
             self.inferiorDireito = [x2,0]
 
@@ -31,10 +31,8 @@ class Trapezio(object):
         return self.inferiorDireito[0] - self.inferiorEsquerdo[0]
     
     def AreaTrapezio(self):
-        return ((self.x1+self.TamanhoDaBase())*self.altura)/2
-    def ToquePecaBPorCima(self,pecaB):
-        return 
-    
+        return ((self.x1+self.TamanhoDaBase())*self.altura/2)
+
     def ExtremaDireita(self):
         return max(self.inferiorDireito[0],self.superiorDireito[0])
 
@@ -75,41 +73,49 @@ class Trapezio(object):
     def Encaixar(pecaA,pecaB):
         baseRetangulo = float()
         distanciaDeVertices = float()
-        # print("AQUIIIIIIIIIIIIIIIIIII")
-        # print(pecaA.OndeToca(pecaB))
         if(pecaA.OndeToca(pecaB)):
             #Tocam em Cima
 
-            baseRetangulo = pecaB.superiorDireito[0]+pecaA.ExtremaDireita()+abs(pecaB.ExtremaEsquerda())
-            print("Base do Retangulo = "+ str(baseRetangulo))
+            baseRetangulo = pecaB.superiorDireito[0]+abs(pecaB.ExtremaEsquerda())+pecaA.ExtremaDireita()+abs(pecaA.ExtremaEsquerda())
+            # print("Base do Retangulo = "+ str(baseRetangulo))
             distanciaDeVertices = pecaB.superiorDireito[0]
-            print("Distancia dos vertices de A e B ="+ str(distanciaDeVertices))
+            # print("Distancia dos vertices de 1 e 2 ="+ str(distanciaDeVertices))
+
+            retanguloParteTrapezioA = pecaA.ExtremaDireita()+abs(pecaA.ExtremaEsquerda())
+            # print("retangulo Parte do Trapezio A = "+ str(retanguloParteTrapezioA))
+            retanguloParteTrapezioB = pecaB.superiorDireito[0]+abs(pecaB.ExtremaEsquerda())
+            # print("retangulo Parte do Trapezio B = "+ str(retanguloParteTrapezioB))
         else:
             #Tocam em baixo
 
-            baseRetangulo = pecaB.inferiorDireito[0]+pecaA.ExtremaDireita()+abs(pecaB.ExtremaEsquerda())
-            print("Base do Retangulo = "+ str(baseRetangulo))
-
-       
+            baseRetangulo = pecaB.inferiorDireito[0]+abs(pecaB.ExtremaEsquerda())+pecaA.ExtremaDireita()+abs(pecaA.ExtremaEsquerda())
+            # print("Base do Retangulo = "+ str(baseRetangulo))
             distanciaDeVertices = pecaB.inferiorDireito[0] +( pecaA.superiorEsquerdo[0]-pecaA.inferiorEsquerdo[0])
-            print("Dinstancia dos vertices de A e B = "+ str(distanciaDeVertices))
+            # print("Dinstancia dos vertices de 1 e 2 = "+ str(distanciaDeVertices))
+            retanguloParteTrapezioA = pecaA.ExtremaDireita()+abs(pecaA.ExtremaEsquerda())
+            # print("retangulo Parte do Trapezio A = "+ str(retanguloParteTrapezioA))
+            retanguloParteTrapezioB = pecaB.inferiorDireito[0]+abs(pecaB.ExtremaEsquerda())
+            # print("retangulo Parte do Trapezio B = "+ str(retanguloParteTrapezioB))
+        
+
         
         areaRetangulo = baseRetangulo*100
-        print("Area Retangulo = "+ str(areaRetangulo))
+        # print("Area Retangulo = "+ str(areaRetangulo))
 
         areaTrapezioA = pecaA.AreaTrapezio()
-        print("Area Trapezio A = "+ str(areaTrapezioA))
+        # print("Area Trapezio 1 = "+ str(areaTrapezioA))
         areaTrapezioB = pecaB.AreaTrapezio()
-        print("Area Trapezio B = "+ str(areaTrapezioB))
+        # print("Area Trapezio 2 = "+ str(areaTrapezioB))
 
-        areaTotal = areaTrapezioA + areaTrapezioB
-        print("Area dos dois trapezios "+ str(areaTotal))
-        desperdicio = areaRetangulo - areaTotal 
-        print("Desperdicio = "+ str(desperdicio))
+        areaDosTrapezios = areaTrapezioA + areaTrapezioB
+        # print("Area dos dois trapezios "+ str(areaDosTrapezios))
+        desperdicio = areaRetangulo - areaDosTrapezios 
+        # print("Desperdicio = "+ str(desperdicio))
 
-        print("Porcentagem do desperdicio = "+ str(desperdicio/areaRetangulo*100)+"%")
+        # print("Porcentagem do desperdicio = "+ str(desperdicio/areaRetangulo*100)+"%")
 
-        return distanciaDeVertices
+        return distanciaDeVertices,desperdicio,baseRetangulo,retanguloParteTrapezioA,retanguloParteTrapezioB
+
 
 
 
