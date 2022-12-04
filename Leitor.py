@@ -93,6 +93,7 @@ def exeDesperdicioMultiplasPecas(pecas):
   areaDosTrapezios = list()
   for x in range (len(pecas)):
     areaDosTrapezios.append(pecas[x].AreaTrapezio())
+    print("Area do trapezio "+str(x+1)+" = "+str(pecas[x].AreaTrapezio()))
   for x in range (len(pecas)-1):
     if(x==0):
       partesDosTrapezios.append(pecas[x].Encaixar(pecas[x+1])[3])
@@ -101,6 +102,7 @@ def exeDesperdicioMultiplasPecas(pecas):
       partesDosTrapezios.append(pecas[x].Encaixar(pecas[x+1])[4])
   ladoDoRetangulo=sum(partesDosTrapezios)
   areaDoRetangulo = ladoDoRetangulo*100
+  
   print("Lista de partes dos trapezios: " + str(partesDosTrapezios))
   print("Area do retangulo = "+ str(areaDoRetangulo))
   print("Area dos trapezios = "+ str(sum(areaDosTrapezios)))

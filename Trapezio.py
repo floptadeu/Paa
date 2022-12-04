@@ -19,16 +19,23 @@ class Trapezio(object):
         if(x3< 0 and  x2<=0  ):
             self.inferiorEsquerdo = [x3 +    x2,0]
         else:
+            
             self.inferiorEsquerdo = [x3,0]
+
 
         if(x3> 0 and x2>0  ):
             self.inferiorDireito = [x2,0]
+           
         else:
             self.inferiorDireito = [x2,0]
+            
 
 
     def TamanhoDaBase(self):
-        return self.inferiorDireito[0] - self.inferiorEsquerdo[0]
+        if (self.inferiorEsquerdo[0]>=0):
+            return self.inferiorDireito[0]
+        else:
+            return self.inferiorDireito[0] - self.inferiorEsquerdo[0]
     
     def AreaTrapezio(self):
         return ((self.x1+self.TamanhoDaBase())*self.altura/2)
@@ -103,9 +110,9 @@ class Trapezio(object):
         # print("Area Retangulo = "+ str(areaRetangulo))
 
         areaTrapezioA = pecaA.AreaTrapezio()
-        # print("Area Trapezio 1 = "+ str(areaTrapezioA))
+        print("Area Trapezio 1 = "+ str(areaTrapezioA))
         areaTrapezioB = pecaB.AreaTrapezio()
-        # print("Area Trapezio 2 = "+ str(areaTrapezioB))
+        print("Area Trapezio 2 = "+ str(areaTrapezioB))
 
         areaDosTrapezios = areaTrapezioA + areaTrapezioB
         # print("Area dos dois trapezios "+ str(areaDosTrapezios))

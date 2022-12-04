@@ -13,7 +13,7 @@ def Interface(pecas):
     distanciasDeVertices.insert(0,0)
     # print(distanciasDeVertices)
 
-    ix = 800
+    ix = 4000
     iy = 100
     image = np.zeros((iy, ix, 3), np.uint8)
 
