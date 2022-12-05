@@ -1,31 +1,42 @@
-from itertools import permutations
 from Trapezio import Trapezio
 from Leitor import Leitor,Pecas,exeEncaixar,exeDesperdicio,exeDesperdicioMultiplasPecas
 from Interface import Interface
 import time
 
+
+
 def permutacao(pecas):
+ 
+ 
+    permPecas = list()
+
+    if len(pecas) == 0:
+        return []
+    if len(pecas) == 1:
+        return [pecas]
+ 
+    # Calcular o numero de permutacoes 
+    for x in range(len(pecas)):
+        m = pecas[x]
+    
+        listaRestante = pecas[:x] + pecas[x+1:]
+ 
+            #Gera todas as permutacoes em que o elemento m 
+            #está na primeira posição
+        for p in permutacao(listaRestante):
+            permPecas.append([m] + p)
+    return permPecas
+
+
+def exePermutacao(permPecas):
+    
     tempoInicial = time.time()
    
-    desperdicioIndv = list()
     desperdicioPerm = list()
     
-    guia = [1,2,3]
-    permGuia = permutations(guia)
-    permPecas = permutations(pecas)
     salvaPerm = 0
     menorDesperdicio = 0
-#for x in permGuia:
-#print(x)
 
-#desperdicio de cada peca individualmente
-#for x in permPecas:
-    
-#desperdicioIndv.append((exeEncaixar(x)))
-# print(desperdicioIndv)
-# print(permGuia)
-
-#desperdicio total por permutacao
     y = 0
     for x in permPecas:
         desperdicioPerm.append((exeDesperdicioMultiplasPecas(x)))
@@ -38,13 +49,15 @@ def permutacao(pecas):
         # print(y)
         y = y + 1
 
-    
-    print(menorDesperdicio)
+    print("Menor desperdicio: ")
+    print(menorDesperdicio[0])
     tempoFinal = time.time()
     tempoDeExecucao = tempoFinal - tempoInicial
     print("Tempo de execucao: " + str(tempoDeExecucao) + " segundos")
     return salvaPerm,menorDesperdicio,tempoDeExecucao
 
 pecas = Pecas(Leitor())
-permutacao(pecas)
-Interface(permutacao(pecas)[0])
+permPecas = permutacao(pecas)
+# print(exePermutacao(permPecas)[0])
+
+Interface(exePermutacao(permPecas)[0])

@@ -16,15 +16,15 @@ class Trapezio(object):
         # coordenadas
         self.superiorEsquerdo = [0,100]
         self.superiorDireito = [x1,100]
-        if(x3< 0 and  x2<=0  ):
-            self.inferiorEsquerdo = [x3 +    x2,0]
+        if(x3<= 0 and  x2<=0  ):
+            self.inferiorEsquerdo = [x3 + x2,0]
         else:
             
             self.inferiorEsquerdo = [x3,0]
 
 
         if(x3> 0 and x2>0  ):
-            self.inferiorDireito = [x2,0]
+            self.inferiorDireito = [x3+x2,0]
            
         else:
             self.inferiorDireito = [x2,0]
@@ -59,9 +59,11 @@ class Trapezio(object):
     #     return
   
     def OndeToca(self,pecaB):
-
+ 
         if(self.PontaEmCimaNaEsquerda() and pecaB.PontaEmCimaNaDireta()):
             #Cima
+            
+           
             return True
         elif(self.PontaEmCimaNaEsquerda()):
             # nesse caso a distancia do lado inferior direito ja e o tamanho da ponta de cima a esquerda
@@ -110,9 +112,9 @@ class Trapezio(object):
         # print("Area Retangulo = "+ str(areaRetangulo))
 
         areaTrapezioA = pecaA.AreaTrapezio()
-        print("Area Trapezio 1 = "+ str(areaTrapezioA))
+        # print("Area Trapezio 1 = "+ str(areaTrapezioA))
         areaTrapezioB = pecaB.AreaTrapezio()
-        print("Area Trapezio 2 = "+ str(areaTrapezioB))
+        # print("Area Trapezio 2 = "+ str(areaTrapezioB))
 
         areaDosTrapezios = areaTrapezioA + areaTrapezioB
         # print("Area dos dois trapezios "+ str(areaDosTrapezios))

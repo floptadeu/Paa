@@ -22,6 +22,7 @@ def Interface(pecas):
     thickness = 2
 
     pontoReferencia = float(ix/2)
+    
     for w in range (len(pecas)):
         #ponto de referencia e o ponto superior esquerdo da peca
    
@@ -38,9 +39,11 @@ def Interface(pecas):
 
         # print(pontoReferencia)
         # print(pts[w])
- 
-        cv2.polylines(image, [pts[w]],
-                        isClosed, color, thickness)
+        cv2.fillPoly(image, [pts[w]],color)
+       
+        # cv2.polylines(image, [pts[w]],
+        #                 isClosed, color, thickness)
+    # print(pts)
 
     #cv2.polylines(image, [pts[0].reshape((-1, 1, 2))],
     #                      isClosed, color, thickness)
@@ -50,4 +53,4 @@ def Interface(pecas):
     cv2.destroyAllWindows()
 
 pecas = Pecas(Leitor())
-Interface(pecas)
+# Interface(pecas)
