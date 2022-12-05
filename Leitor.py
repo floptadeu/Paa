@@ -110,4 +110,4 @@ def exeDesperdicioMultiplasPecas(pecas):
   print("Desperdicio = "+ str(despercio))
   return despercio,areaDoRetangulo
 
-exeDesperdicioMultiplasPecas(Pecas(Leitor()))
+# exeDesperdicioMultiplasPecas(Pecas(Leitor()))
