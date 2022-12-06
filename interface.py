@@ -52,5 +52,5 @@ def Interface(pecas):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-pecas = Pecas(Leitor())
+# pecas = Pecas(Leitor())
 # Interface(pecas)

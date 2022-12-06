@@ -5,7 +5,7 @@ import time
 
 
 
-def permutacao(pecas):
+def Permutacao(pecas):
  
  
     permPecas = list()
@@ -23,7 +23,7 @@ def permutacao(pecas):
  
             #Gera todas as permutacoes em que o elemento m 
             #está na primeira posição
-        for p in permutacao(listaRestante):
+        for p in Permutacao(listaRestante):
             permPecas.append([m] + p)
     return permPecas
 
@@ -57,7 +57,7 @@ def exePermutacao(permPecas):
     return salvaPerm,menorDesperdicio,tempoDeExecucao
 
 pecas = Pecas(Leitor())
-permPecas = permutacao(pecas)
+permPecas = Permutacao(pecas)
 # print(exePermutacao(permPecas)[0])
 
-Interface(exePermutacao(permPecas)[0])
+# Interface(exePermutacao(permPecas)[0])
