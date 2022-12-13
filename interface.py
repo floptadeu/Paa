@@ -1,8 +1,6 @@
 import numpy as np 
 import cv2
 from Trapezio import Trapezio
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
 from Leitor import Leitor,Pecas,exeEncaixar
 
 def Interface(pecas):
@@ -52,5 +50,5 @@ def Interface(pecas):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-# pecas = Pecas(Leitor())
+pecas = Pecas(Leitor())
 # Interface(pecas)

@@ -1,9 +1,8 @@
-from itertools import permutations
-from Trapezio import Trapezio
+
 from Leitor import Leitor,Pecas,exeEncaixar,exeDesperdicio,exeDesperdicioMultiplasPecas
 from Interface import Interface
 import time
-from Permutacao import Permutacao,exePermutacao
+
 
 
 global melhor
@@ -12,29 +11,33 @@ global arranjo
 melhor = float('inf')
 
 
-def BranchAndBound(remaining, candidate=[]):
+def BranchAndBound(listaRestante, candidato=[]):
     global melhor
     global arranjo
 
-    if len(remaining) == 0:
-        if exeDesperdicioMultiplasPecas(candidate)[0] < melhor:
-            melhor = exeDesperdicioMultiplasPecas(candidate)[0]
-            arranjo = candidate
-        # print(candidate)
+    if len(listaRestante) == 0:
+        if exeDesperdicioMultiplasPecas(candidato)[0] < melhor:
+            melhor = exeDesperdicioMultiplasPecas(candidato)[0]
+            arranjo = candidato
+        # print(candidato)
  
-    for i in range(len(remaining)):
+    for i in range(len(listaRestante)):
  
-        newCandidate = candidate + [remaining[i]]
-        newRemaining = remaining[0:i] + remaining[i+1:]
+        novoCandidato = candidato + [listaRestante[i]]
+        novaListaRestante = listaRestante[0:i] + listaRestante[i+1:]
 
-        if exeDesperdicioMultiplasPecas(newCandidate)[0] <= melhor:
-            BranchAndBound(newRemaining, newCandidate)
+        if exeDesperdicioMultiplasPecas(novoCandidato)[0] <= melhor:
+            BranchAndBound(novaListaRestante, novoCandidato)
     return arranjo
 
 
 
 pecas= Pecas(Leitor())
-Interface(BranchAndBound(pecas))
+tempoInicio = time.time()
+BranchAndBound(pecas)
+TempoFinal = time.time()
+tempoDeExecucao = TempoFinal - tempoInicio
+print("Tempo de execucao: " + str(tempoDeExecucao) + " segundos")
 print(melhor)
 print(arranjo)
 # print(permutacao(arr))

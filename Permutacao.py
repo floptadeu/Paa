@@ -18,7 +18,7 @@ def Permutacao(pecas):
     # Calcular o numero de permutacoes 
     for x in range(len(pecas)):
         m = pecas[x]
-    
+        #removendo a peca atual da lista
         listaRestante = pecas[:x] + pecas[x+1:]
  
             #Gera todas as permutacoes em que o elemento m 
@@ -56,8 +56,8 @@ def exePermutacao(permPecas):
     print("Tempo de execucao: " + str(tempoDeExecucao) + " segundos")
     return salvaPerm,menorDesperdicio,tempoDeExecucao
 
-pecas = Pecas(Leitor())
-permPecas = Permutacao(pecas)
+# pecas = Pecas(Leitor())
+# permPecas = Permutacao(pecas)
 # print(exePermutacao(permPecas)[0])
-
+# print(exePermutacao(permPecas)[2])
 # Interface(exePermutacao(permPecas)[0])

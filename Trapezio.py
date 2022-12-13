@@ -124,6 +124,8 @@ class Trapezio(object):
         # print("Porcentagem do desperdicio = "+ str(desperdicio/areaRetangulo*100)+"%")
 
         return distanciaDeVertices,desperdicio,baseRetangulo,retanguloParteTrapezioA,retanguloParteTrapezioB
+    
+
 
 
 
